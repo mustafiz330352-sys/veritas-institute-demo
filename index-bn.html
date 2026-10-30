@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ভেরিটাস ইনস্টিটিউট | এক্সপার্ট-লেড অনলাইন কোর্স</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --primary:#0f766e; --primary-light:#14b8a6; --accent:#f97316; --accent-hover:#ea580c; --dark:#134e4a; --gray:#64748b; --light:#f0fdfa; --shadow:0 10px 30px -10px rgba(15,118,110,0.15); --radius:16px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans Bengali','Inter',system-ui,sans-serif; color:var(--dark); line-height:1.7; background:var(--white); }
+    a { text-decoration:none; color:inherit; }
+    img { max-width:100%; display:block; }
+    .container { width:100%; max-width:1140px; margin:0 auto; padding:0 20px; }
+    header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid #ccfbf1; }
+    .nav { display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .logo span { font-size:1.4rem; font-weight:800; background:linear-gradient(135deg,var(--primary),var(--primary-light)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-family:'Inter',sans-serif; }
+    .nav-links { display:flex; gap:24px; list-style:none; align-items:center; }
+    .nav-links a { font-weight:600; color:var(--gray); }
+    .nav-links a:hover { color:var(--primary); }
+    .nav-cta { background:var(--primary); color:white !important; padding:10px 22px; border-radius:50px; }
+    .lang-switch { font-size:0.85rem; font-weight:700; color:var(--primary); border:1.5px solid var(--primary-light); padding:6px 14px; border-radius:50px; }
+    .lang-switch:hover { background:var(--primary); color:white; }
+    .mobile-menu-btn { display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--dark); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 28px; border-radius:50px; font-weight:700; font-size:1rem; transition:all 0.25s ease; cursor:pointer; border:none; }
+    .btn-primary { background:var(--primary); color:white; box-shadow:0 8px 20px -6px rgba(15,118,110,0.4); }
+    .btn-primary:hover { background:var(--primary-light); transform:translateY(-2px); }
+    .btn-secondary { background:white; color:var(--primary); border:2px solid #99f6e4; }
+    .btn-secondary:hover { border-color:var(--primary-light); background:#f0fdfa; }
+    .btn-accent { background:var(--accent); color:white; box-shadow:0 8px 20px -6px rgba(249,115,22,0.4); }
+    .btn-accent:hover { background:var(--accent-hover); transform:translateY(-2px); }
+    section { padding:90px 0; }
+    .section-header { text-align:center; max-width:640px; margin:0 auto 56px; }
+    .section-header h2 { font-size:clamp(1.9rem,4vw,2.4rem); font-weight:800; margin-bottom:14px; }
+    .section-header p { color:var(--gray); font-size:1.1rem; }
+    .draft-badge { display:inline-flex; align-items:center; gap:8px; background:#fff7ed; color:#c2410c; border:1.5px dashed #fdba74; font-size:0.85rem; font-weight:600; padding:6px 16px; border-radius:50px; margin-bottom:20px; }
+    .hero { position:relative; padding:90px 0 80px; background:linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 40%,#e0f2fe 100%); overflow:hidden; }
+    .hero::before { content:''; position:absolute; top:-100px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(20,184,166,0.18) 0%,transparent 70%); border-radius:50%; }
+    .hero-content { position:relative; max-width:700px; }
+    .hero-badge { display:inline-block; background:white; color:var(--primary); font-size:0.85rem; font-weight:700; padding:6px 16px; border-radius:50px; margin-bottom:24px; box-shadow:var(--shadow); }
+    .hero h1 { font-size:clamp(2.2rem,5vw,3.2rem); font-weight:800; line-height:1.25; margin-bottom:20px; }
+    .hero h1 span { color:var(--primary-light); }
+    .hero p { font-size:1.15rem; color:var(--gray); margin-bottom:36px; max-width:560px; }
+    .hero-buttons { display:flex; gap:16px; flex-wrap:wrap; }
+    .courses { background:var(--light); }
+    .course-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; }
+    .course-card { background:white; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:all 0.3s ease; display:flex; flex-direction:column; }
+    .course-card:hover { transform:translateY(-8px); box-shadow:0 20px 40px -15px rgba(15,118,110,0.2); }
+    .course-image { height:180px; background-size:cover; background-position:center; position:relative; }
+    .course-image::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.3),transparent); }
+    .course-price { position:absolute; top:16px; right:16px; background:white; color:var(--primary); font-weight:700; padding:6px 14px; border-radius:50px; font-size:0.95rem; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    .course-body { padding:24px; flex:1; display:flex; flex-direction:column; }
+    .course-body h3 { font-size:1.2rem; font-weight:800; margin-bottom:10px; }
+    .course-body p { color:var(--gray); font-size:0.95rem; margin-bottom:20px; flex:1; }
+    .course-meta { display:flex; gap:16px; margin-bottom:18px; font-size:0.85rem; color:var(--gray); }
+    .course-body .btn { width:100%; padding:12px; font-size:0.95rem; }
+    .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:28px; }
+    .how { background:linear-gradient(180deg,#134e4a 0%,#0f766e 100%); color:white; }
+    .how .section-header h2, .how .section-header p { color:white; }
+    .how .section-header p { opacity:0.85; }
+    .step { text-align:center; padding:28px 20px; background:rgba(255,255,255,0.08); border-radius:var(--radius); border:1px solid rgba(255,255,255,0.1); }
+    .step-number { width:56px; height:56px; background:linear-gradient(135deg,var(--primary-light),#2dd4bf); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:800; margin:0 auto 18px; color:white; }
+    .step h3 { font-size:1.1rem; font-weight:700; margin-bottom:10px; }
+    .step p { font-size:0.92rem; opacity:0.85; }
+    .cta { background:linear-gradient(135deg,var(--primary) 0%,#0d9488 100%); color:white; text-align:center; padding:90px 20px; }
+    .cta h2 { font-size:clamp(2rem,4vw,2.6rem); font-weight:800; margin-bottom:16px; }
+    .cta p { font-size:1.12rem; opacity:0.9; margin-bottom:32px; }
+    .cta .btn-accent { font-size:1.1rem; padding:16px 36px; }
+    footer { background:#134e4a; color:#99f6e4; padding:50px 0 30px; }
+    .footer-content { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:24px; margin-bottom:30px; }
+    .footer-logo { font-size:1.3rem; font-weight:800; color:white; }
+    .footer-links { display:flex; gap:28px; list-style:none; flex-wrap:wrap; }
+    .footer-links a { color:#99f6e4; }
+    .footer-links a:hover { color:white; }
+    .footer-bottom { border-top:1px solid #0f766e; padding-top:24px; text-align:center; font-size:0.9rem; }
+    @media (max-width:768px) {
+      .nav-links { display:none; }
+      .nav-links.open { display:flex; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:white; padding:20px; box-shadow:var(--shadow); }
+      .mobile-menu-btn { display:block; }
+      .hero { padding:60px 0 54px; }
+      .hero-buttons { flex-direction:column; }
+      .hero-buttons .btn { width:100%; }
+      section { padding:64px 0; }
+      .course-grid, .steps { grid-template-columns:1fr; }
+      .footer-content { flex-direction:column; text-align:center; }
+      .footer-links { justify-content:center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index-bn.html" class="logo"><span>Veritas Institute</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#courses">কোর্স</a></li>
+        <li><a href="index.html#faculty">ইন্সট্রাক্টর</a></li>
+        <li><a href="#how">কীভাবে কাজ করে</a></li>
+        <li><a href="enroll.html" class="nav-cta">এনরোল করুন</a></li>
+        <li><a href="index.html" class="lang-switch">English</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="draft-badge">📝 খসড়া / ডেমো প্রিভিউ — চূড়ান্ত বিল্ডে বাংলা কনটেন্ট সম্পূর্ণ হবে</div>
+        <div class="hero-badge">🎓 অনলাইন লার্নিং প্ল্যাটফর্ম</div>
+        <h1>এক্সপার্ট-লেড কোর্স দিয়ে <span>ক্যারিয়ার এগিয়ে নিন</span></h1>
+        <p>ইন্ডাস্ট্রি এক্সপার্টদের কাছ থেকে বাস্তব দক্ষতা শিখুন। ব্যস্ত মানুষের জন্য ডিজাইন করা নমনীয় অনলাইন লার্নিং।</p>
+        <div class="hero-buttons">
+          <a href="enroll.html" class="btn btn-primary">এনরোল করুন →</a>
+          <a href="#courses" class="btn btn-secondary">কোর্স দেখুন</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="courses" id="courses">
+    <div class="container">
+      <div class="section-header">
+        <h2>জনপ্রিয় কোর্সসমূহ</h2>
+        <p>ইন্ডাস্ট্রি এক্সপার্টদের ডিজাইন করা বাস্তব, চাকরি-উপযোগী কোর্স</p>
+      </div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-image" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop');"><div class="course-price">$99</div></div>
+          <div class="course-body">
+            <h3>ডিজিটাল মার্কেটিং বেসিক</h3>
+            <div class="course-meta"><span>⏱ ৪ সপ্তাহ</span><span>📚 ১২ লেসন</span></div>
+            <p>SEO, সোশ্যাল মিডিয়া ও অনলাইন অ্যাড শিখুন। বাস্তব ফলাফল চান এমন নতুনদের জন্য পারফেক্ট।</p>
+            <a href="course-digital-marketing.html" class="btn btn-primary">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop');"><div class="course-price">$129</div></div>
+          <div class="course-body">
+            <h3>নতুনদের জন্য ওয়েব ডেভেলপমেন্ট</h3>
+            <div class="course-meta"><span>⏱ ৬ সপ্তাহ</span><span>📚 ১৮ লেসন</span></div>
+            <p>HTML, CSS ও WordPress দিয়ে আপনার প্রথম ওয়েবসাইট বানান। হ্যান্ডস-অন প্রজেক্টসহ।</p>
+            <a href="course-web-development.html" class="btn btn-primary">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop');"><div class="course-price">$79</div></div>
+          <div class="course-body">
+            <h3>বিজনেস কমিউনিকেশন</h3>
+            <div class="course-meta"><span>⏱ ৩ সপ্তাহ</span><span>📚 ১০ লেসন</span></div>
+            <p>কর্মক্ষেত্রের জন্য লেখা, প্রেজেন্টেশন ও প্রফেশনাল ইমেইল স্কিল উন্নত করুন।</p>
+            <a href="course-business-communication.html" class="btn btn-primary">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop');"><div class="course-price">$119</div></div>
+          <div class="course-body">
+            <h3>এক্সেল দিয়ে ডেটা অ্যানালাইসিস</h3>
+            <div class="course-meta"><span>⏱ ৫ সপ্তাহ</span><span>📚 ১৫ লেসন</span></div>
+            <p>এক্সেল ফর্মুলা, পিভট টেবিল, চার্ট ও ডেটা ভিজ্যুয়ালাইজেশন আয়ত্ত করুন।</p>
+            <a href="course-data-analysis.html" class="btn btn-primary">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image:url('https://sspark.genspark.ai/i/uCgBBX7Hcqitqes0?width=1200');"><div class="course-price">$149</div></div>
+          <div class="course-body">
+            <h3>গ্রাফিক ডিজাইন ফান্ডামেন্টালস</h3>
+            <div class="course-meta"><span>⏱ ৬ সপ্তাহ</span><span>📚 ১৬ লেসন</span></div>
+            <p>Canva, কালার থিওরি ও টাইপোগ্রাফি শিখে স্ক্র্যাচ থেকে প্রফেশনাল ডিজাইন তৈরি করুন।</p>
+            <a href="course-graphic-design.html" class="btn btn-primary">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop');"><div class="course-price">$109</div></div>
+          <div class="course-body">
+            <h3>প্রজেক্ট ম্যানেজমেন্ট এসেনশিয়ালস</h3>
+            <div class="course-meta"><span>⏱ ৪ সপ্তাহ</span><span>📚 ১৪ লেসন</span></div>
+            <p>প্ল্যানিং, টিম কোঅর্ডিনেশন ও রিস্ক ম্যানেজমেন্ট শিখে প্রজেক্ট সফলভাবে ডেলিভার করুন।</p>
+            <a href="course-project-management.html" class="btn btn-primary">বিস্তারিত দেখুন</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-header">
+        <h2>কীভাবে কাজ করে</h2>
+        <p>মাত্র কয়েকটি সহজ ধাপে শেখা শুরু করুন</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-number">১</div><h3>কোর্স বেছে নিন</h3><p>আপনার লক্ষ্য ও সময়ের সাথে মানানসই কোর্সটি বেছে নিন।</p></div>
+        <div class="step"><div class="step-number">২</div><h3>অনলাইনে এনরোল</h3><p>সহজ রেজিস্ট্রেশন ও নিরাপদ পেমেন্ট প্রক্রিয়া সম্পন্ন করুন।</p></div>
+        <div class="step"><div class="step-number">৩</div><h3>শেখা শুরু করুন</h3><p>ফোন, ট্যাব বা ল্যাপটপ — যেকোনো ডিভাইসে যখন পছন্দে লেসন দেখুন।</p></div>
+        <div class="step"><div class="step-number">৪</div><h3>সাপোর্ট পান</h3><p>প্রতিটি ধাপে সফল হতে আমাদের টিম পাশে আছে।</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>শেখা শুরু করতে প্রস্তুত?</h2>
+      <p>আমাদের সাথে ইতিমধ্যে শত শত শিক্ষার্থী দক্ষতা বাড়াচ্ছে। আপনিও যোগ দিন।</p>
+      <a href="enroll.html" class="btn btn-accent">এনরোল করুন →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Veritas Institute</div>
+        <ul class="footer-links">
+          <li><a href="index.html#faculty">ইন্সট্রাক্টর</a></li>
+          <li><a href="#courses">কোর্স</a></li>
+          <li><a href="contact.html">যোগাযোগ</a></li>
+          <li><a href="privacy.html">প্রাইভেসি পলিসি</a></li>
+          <li><a href="index.html">English</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">© ২০২৬ Veritas Institute ডেমো। সর্বস্বত্ব সংরক্ষিত। — ক্লায়েন্ট রিভিউয়ের জন্য খসড়া প্রিভিউ।</div>
+    </div>
+  </footer>
+</body>
+</html>

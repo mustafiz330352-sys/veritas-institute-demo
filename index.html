@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veritas Institute | Expert-Led Online Courses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-light: #14b8a6;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --dark: #134e4a;
+      --gray: #64748b;
+      --light: #f0fdfa;
+      --white: #ffffff;
+      --shadow: 0 10px 30px -10px rgba(15,118,110,0.15);
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; color: var(--dark); line-height: 1.6; background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #ccfbf1; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo span { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
+    .nav-links a { font-weight: 500; color: var(--gray); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta { background: var(--primary); color: white !important; padding: 10px 22px; border-radius: 50px; font-weight: 600; }
+    .nav-cta:hover { background: var(--primary-light); }
+    .lang-switch { font-size: 0.85rem; font-weight: 600; color: var(--primary); border: 1.5px solid var(--primary-light); padding: 6px 14px; border-radius: 50px; }
+    .lang-switch:hover { background: var(--primary); color: white; }
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--dark); }
+    .hero { position: relative; padding: 100px 0 90px; background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 40%, #e0f2fe 100%); overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(20,184,166,0.18) 0%, transparent 70%); border-radius: 50%; }
+    .hero-content { position: relative; max-width: 680px; }
+    .hero-badge { display: inline-block; background: white; color: var(--primary); font-size: 0.85rem; font-weight: 600; padding: 6px 16px; border-radius: 50px; margin-bottom: 24px; box-shadow: var(--shadow); }
+    .hero h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+    .hero h1 span { color: var(--primary-light); }
+    .hero p { font-size: 1.2rem; color: var(--gray); margin-bottom: 36px; max-width: 540px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 1rem; transition: all 0.25s ease; cursor: pointer; border: none; }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 8px 20px -6px rgba(15,118,110,0.4); }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .btn-secondary { background: white; color: var(--primary); border: 2px solid #99f6e4; }
+    .btn-secondary:hover { border-color: var(--primary-light); background: #f0fdfa; }
+    .btn-accent { background: var(--accent); color: white; box-shadow: 0 8px 20px -6px rgba(249,115,22,0.4); }
+    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); }
+    section { padding: 90px 0; }
+    .section-header { text-align: center; max-width: 600px; margin: 0 auto 56px; }
+    .section-header h2 { font-size: clamp(1.9rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 14px; }
+    .section-header p { color: var(--gray); font-size: 1.1rem; }
+    .courses { background: var(--light); }
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .course-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: all 0.3s ease; display: flex; flex-direction: column; }
+    .course-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(15,118,110,0.2); }
+    .course-image { height: 180px; background-size: cover; background-position: center; position: relative; }
+    .course-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.3), transparent); }
+    .course-price { position: absolute; top: 16px; right: 16px; background: white; color: var(--primary); font-weight: 700; padding: 6px 14px; border-radius: 50px; font-size: 0.95rem; z-index: 2; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .course-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .course-body h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+    .course-body p { color: var(--gray); font-size: 0.95rem; margin-bottom: 20px; flex: 1; }
+    .course-meta { display: flex; gap: 16px; margin-bottom: 18px; font-size: 0.85rem; color: var(--gray); }
+    .course-body .btn { width: 100%; padding: 12px; font-size: 0.95rem; }
+    .faculty-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
+    .faculty-card { text-align: center; background: white; border-radius: var(--radius); padding: 36px 28px; box-shadow: var(--shadow); transition: transform 0.3s; }
+    .faculty-card:hover { transform: translateY(-6px); }
+    .faculty-photo { width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 20px; object-fit: cover; border: 4px solid #99f6e4; box-shadow: 0 8px 20px rgba(20,184,166,0.25); }
+    .faculty-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+    .faculty-role { color: var(--primary-light); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+    .faculty-card p { color: var(--gray); font-size: 0.95rem; }
+    .how-it-works { background: linear-gradient(180deg, #134e4a 0%, #0f766e 100%); color: white; }
+    .how-it-works .section-header h2, .how-it-works .section-header p { color: white; }
+    .how-it-works .section-header p { opacity: 0.85; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+    .step { text-align: center; padding: 28px 20px; background: rgba(255,255,255,0.08); border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s; }
+    .step:hover { background: rgba(255,255,255,0.14); transform: translateY(-4px); }
+    .step-number { width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary-light), #2dd4bf); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 800; margin: 0 auto 18px; color: white; }
+    .step h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .step p { font-size: 0.95rem; opacity: 0.85; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+    .testimonial-card { background: white; border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); border-left: 5px solid var(--primary-light); }
+    .stars { color: #fbbf24; font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-card blockquote { font-size: 1.05rem; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { font-weight: 600; color: var(--primary); }
+    .testimonial-role { font-size: 0.85rem; color: var(--gray); }
+    .cta { background: linear-gradient(135deg, var(--primary) 0%, #0d9488 100%); color: white; text-align: center; padding: 90px 20px; position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: -50%; left: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%); border-radius: 50%; }
+    .cta-content { position: relative; max-width: 600px; margin: 0 auto; }
+    .cta h2 { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 16px; }
+    .cta p { font-size: 1.15rem; opacity: 0.9; margin-bottom: 32px; }
+    .cta .btn-accent { font-size: 1.1rem; padding: 16px 36px; }
+    footer { background: #134e4a; color: #99f6e4; padding: 50px 0 30px; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 30px; }
+    .footer-logo { font-size: 1.3rem; font-weight: 800; color: white; }
+    .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: #99f6e4; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid #0f766e; padding-top: 24px; text-align: center; font-size: 0.9rem; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero { padding: 70px 0 60px; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { width: 100%; }
+      section { padding: 70px 0; }
+      .course-grid, .faculty-grid, .steps, .testimonial-grid { grid-template-columns: 1fr; }
+      .footer-content { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo"><span>Veritas Institute</span></a>
+      <ul class="nav-links">
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#faculty">Faculty</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="enroll.html" class="nav-cta">Enroll Now</a></li>
+        <li><a href="index-bn.html" class="lang-switch">বাংলা</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🎓 Online Learning Platform</div>
+        <h1>Advance Your Career with <span>Expert-Led Courses</span></h1>
+        <p>Learn practical skills from industry experts. Flexible online learning, designed for busy professionals.</p>
+        <div class="hero-buttons">
+          <a href="enroll.html" class="btn btn-primary">Enroll Now →</a>
+          <a href="#courses" class="btn btn-secondary">View Courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="courses" id="courses">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Courses</h2>
+        <p>Practical, job-ready courses designed by industry experts</p>
+      </div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop');"><div class="course-price">$99</div></div>
+          <div class="course-body">
+            <h3>Digital Marketing Basics</h3>
+            <div class="course-meta"><span>⏱ 4 Weeks</span><span>📚 12 Lessons</span></div>
+            <p>Learn SEO, social media, and online ads. Perfect for beginners who want real results.</p>
+            <a href="course-digital-marketing.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop');"><div class="course-price">$129</div></div>
+          <div class="course-body">
+            <h3>Web Development for Beginners</h3>
+            <div class="course-meta"><span>⏱ 6 Weeks</span><span>📚 18 Lessons</span></div>
+            <p>Build your first website with HTML, CSS, and WordPress. Hands-on projects included.</p>
+            <a href="course-web-development.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop');"><div class="course-price">$79</div></div>
+          <div class="course-body">
+            <h3>Business Communication</h3>
+            <div class="course-meta"><span>⏱ 3 Weeks</span><span>📚 10 Lessons</span></div>
+            <p>Improve writing, presentation, and professional email skills for the workplace.</p>
+            <a href="course-business-communication.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop');"><div class="course-price">$119</div></div>
+          <div class="course-body">
+            <h3>Data Analysis with Excel</h3>
+            <div class="course-meta"><span>⏱ 5 Weeks</span><span>📚 15 Lessons</span></div>
+            <p>Master Excel formulas, pivot tables, charts and data visualization for business decisions.</p>
+            <a href="course-data-analysis.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image: url('https://sspark.genspark.ai/i/uCgBBX7Hcqitqes0?width=1200');"><div class="course-price">$149</div></div>
+          <div class="course-body">
+            <h3>Graphic Design Fundamentals</h3>
+            <div class="course-meta"><span>⏱ 6 Weeks</span><span>📚 16 Lessons</span></div>
+            <p>Learn Canva, color theory, typography and create professional designs from scratch.</p>
+            <a href="course-graphic-design.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop');"><div class="course-price">$109</div></div>
+          <div class="course-body">
+            <h3>Project Management Essentials</h3>
+            <div class="course-meta"><span>⏱ 4 Weeks</span><span>📚 14 Lessons</span></div>
+            <p>Learn planning, team coordination, risk management and deliver projects successfully.</p>
+            <a href="course-project-management.html" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faculty">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meet Our Expert Instructors</h2>
+        <p>Learn from professionals with real-world industry experience</p>
+      </div>
+      <div class="faculty-grid">
+        <div class="faculty-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face" alt="Sarah Johnson" class="faculty-photo" />
+          <h3>Sarah Johnson</h3>
+          <div class="faculty-role">Digital Marketing Expert</div>
+          <p>10+ years of experience in online marketing and training. Helped 5,000+ students grow their careers.</p>
+        </div>
+        <div class="faculty-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face" alt="Michael Lee" class="faculty-photo" />
+          <h3>Michael Lee</h3>
+          <div class="faculty-role">Web Developer</div>
+          <p>Full-stack developer with 8 years of industry experience. Specializes in modern web technologies.</p>
+        </div>
+        <div class="faculty-card">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face" alt="Emily Davis" class="faculty-photo" />
+          <h3>Emily Davis</h3>
+          <div class="faculty-role">Business Communication Coach</div>
+          <p>Helps professionals improve workplace communication skills and build confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Start learning in just a few simple steps</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><h3>Choose Your Course</h3><p>Browse and select the course that fits your goals and schedule.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>Enroll Online</h3><p>Complete a simple registration and secure payment process.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>Start Learning</h3><p>Access lessons anytime, on any device — phone, tablet or laptop.</p></div>
+        <div class="step"><div class="step-number">4</div><h3>Get Support</h3><p>Our team is here to help you succeed every step of the way.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Students Say</h2>
+        <p>Real feedback from learners who transformed their skills</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"The course was easy to follow and very practical. I learned a lot in a short time."</blockquote>
+          <div class="testimonial-author">Rahim U.</div>
+          <div class="testimonial-role">Student</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Great instructors and clear lessons. Highly recommended for busy professionals!"</blockquote>
+          <div class="testimonial-author">Ayesha K.</div>
+          <div class="testimonial-role">Professional</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <div class="cta-content">
+      <h2>Ready to Start Learning?</h2>
+      <p>Join hundreds of students already growing their skills with us.</p>
+      <a href="enroll.html" class="btn btn-accent">Enroll Now →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Veritas Institute</div>
+        <ul class="footer-links">
+          <li><a href="#faculty">About</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="index-bn.html">বাংলা</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">© 2026 Veritas Institute Demo. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>

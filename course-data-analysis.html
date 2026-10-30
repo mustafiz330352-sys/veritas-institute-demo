@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ডেটা অ্যানালাইসিস উইথ এক্সেল কোর্স | Veritas Institute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-light: #14b8a6;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --dark: #134e4a;
+      --gray: #64748b;
+      --light: #f0fdfa;
+      --shadow: 0 10px 30px -10px rgba(15,118,110,0.15);
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans Bengali', 'Inter', system-ui, sans-serif; color: var(--dark); line-height: 1.7; background: var(--white); }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #ccfbf1; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo span { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Inter', sans-serif; }
+    .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
+    .nav-links a { font-weight: 600; color: var(--gray); }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta { background: var(--primary); color: white !important; padding: 10px 22px; border-radius: 50px; }
+    .lang-switch { font-size: 0.85rem; font-weight: 700; color: var(--primary); border: 1.5px solid var(--primary-light); padding: 6px 14px; border-radius: 50px; }
+    .lang-switch:hover { background: var(--primary); color: white; }
+    .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--dark); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: all 0.25s ease; cursor: pointer; border: none; }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 8px 20px -6px rgba(15,118,110,0.4); }
+    .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+    .btn-secondary { background: white; color: var(--primary); border: 2px solid #99f6e4; }
+    .btn-secondary:hover { border-color: var(--primary-light); background: #f0fdfa; }
+    .btn-accent { background: var(--accent); color: white; box-shadow: 0 8px 20px -6px rgba(249,115,22,0.4); }
+    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-2px); }
+    section { padding: 64px 0; }
+    .course-hero { padding: 56px 0 64px; background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 40%, #e0f2fe 100%); }
+    .breadcrumb { font-size: 0.9rem; color: var(--gray); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--primary); font-weight: 600; }
+    .draft-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff7ed; color: #c2410c; border: 1.5px dashed #fdba74; font-size: 0.85rem; font-weight: 600; padding: 6px 16px; border-radius: 50px; margin-bottom: 18px; }
+    .course-hero h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); font-weight: 800; line-height: 1.3; margin-bottom: 14px; max-width: 780px; }
+    .course-hero .lead { font-size: 1.1rem; color: var(--gray); max-width: 640px; margin-bottom: 22px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 14px; font-weight: 600; font-size: 0.92rem; margin-bottom: 28px; }
+    .hero-meta span { background: white; padding: 8px 16px; border-radius: 50px; box-shadow: var(--shadow); }
+    .detail-layout { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+    .detail-main h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; }
+    .detail-block { margin-bottom: 44px; }
+    .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; list-style: none; }
+    .checklist li { background: var(--light); padding: 13px 16px; border-radius: 12px; font-size: 0.95rem; display: flex; gap: 10px; align-items: flex-start; }
+    .checklist li::before { content: '✔'; color: var(--primary); font-weight: 800; }
+    .cur-note { color: var(--gray); margin-bottom: 16px; font-size: 0.95rem; }
+    .accordion details { background: white; border: 1.5px solid #ccfbf1; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+    .accordion summary { cursor: pointer; padding: 16px 20px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; background: var(--light); }
+    .accordion summary::after { content: '+'; font-size: 1.4rem; color: var(--primary); }
+    .accordion details[open] summary::after { content: '−'; }
+    .accordion .acc-body { padding: 14px 20px 18px; color: var(--gray); font-size: 0.94rem; }
+    .accordion .acc-body ul { margin: 0 0 0 18px; }
+    .accordion .acc-body li { margin-bottom: 6px; }
+    .lesson-count { font-size: 0.8rem; font-weight: 600; color: var(--primary-light); white-space: nowrap; }
+    .instructor-box { display: flex; gap: 20px; align-items: center; background: var(--light); border-radius: var(--radius); padding: 24px; }
+    .instructor-initials { width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; font-weight: 800; flex-shrink: 0; font-family: 'Inter', sans-serif; }
+    .instructor-box h3 { font-size: 1.1rem; font-weight: 800; }
+    .instructor-box .role { color: var(--primary-light); font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; }
+    .instructor-box p { color: var(--gray); font-size: 0.92rem; }
+    .sidebar-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); border: 1.5px solid #ccfbf1; padding: 26px; position: sticky; top: 96px; }
+    .sidebar-card .price { font-size: 2.1rem; font-weight: 800; color: var(--primary); font-family: 'Inter', sans-serif; }
+    .sidebar-card .price-note { color: var(--gray); font-size: 0.86rem; margin-bottom: 16px; }
+    .includes { list-style: none; margin: 16px 0 6px; }
+    .includes li { padding: 8px 0; font-size: 0.92rem; display: flex; gap: 10px; align-items: center; border-bottom: 1px dashed #e2e8f0; }
+    .includes li:last-child { border-bottom: none; }
+    .includes li::before { content: '✓'; color: var(--primary-light); font-weight: 800; }
+    .sidebar-card .btn { width: 100%; }
+    .sidebar-note { font-size: 0.8rem; color: var(--gray); text-align: center; margin-top: 12px; }
+    footer { background: #134e4a; color: #99f6e4; padding: 50px 0 30px; }
+    .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 30px; }
+    .footer-logo { font-size: 1.3rem; font-weight: 800; color: white; }
+    .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: #99f6e4; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { border-top: 1px solid #0f766e; padding-top: 24px; text-align: center; font-size: 0.9rem; }
+    @media (max-width: 900px) {
+      .detail-layout { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; }
+      .checklist { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: white; padding: 20px; box-shadow: var(--shadow); }
+      .mobile-menu-btn { display: block; }
+      section, .course-hero { padding: 44px 0; }
+      .instructor-box { flex-direction: column; text-align: center; }
+      .footer-content { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="index-bn.html" class="logo"><span>Veritas Institute</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index-bn.html#courses">কোর্স</a></li>
+        <li><a href="index.html#faculty">ইন্সট্রাক্টর</a></li>
+        <li><a href="index-bn.html#how">কীভাবে কাজ করে</a></li>
+        <li><a href="enroll.html" class="nav-cta">এনরোল করুন</a></li>
+        <li><a href="index.html" class="lang-switch">English</a></li>
+      </ul>
+      <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <section class="course-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index-bn.html">হোম</a> › <a href="index-bn.html#courses">কোর্স</a> › এক্সেল দিয়ে ডেটা অ্যানালাইসিস</div>
+      <div class="draft-badge">📝 খসড়া / ডেমো প্রিভিউ — চূড়ান্ত বিল্ডে কনটেন্ট সম্প্রসারিত হবে</div>
+      <h1>এক্সেল দিয়ে ডেটা অ্যানালাইসিস</h1>
+      <p class="lead">এক্সেল ফর্মুলা, পিভট টেবিল, চার্ট ও ডেটা ভিজ্যুয়ালাইজেশন আয়ত্ত করে ব্যবসায়িক সিদ্ধান্ত নিন।</p>
+      <div class="hero-meta">
+        <span>⏱ ৫ সপ্তাহ</span>
+        <span>📚 ১৫টি লেসন</span>
+        <span>🎓 সার্টিফিকেট অন্তর্ভুক্ত</span>
+        <span>💬 বাংলা ও ইংরেজি সাপোর্ট</span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="enroll.html?course=course-data-analysis" class="btn btn-accent">এনরোল করুন — $119</a>
+        <a href="index-bn.html#courses" class="btn btn-secondary">← সব কোর্স</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container detail-layout">
+      <div class="detail-main">
+        <div class="detail-block">
+          <h2>যা যা শিখবেন</h2>
+          <ul class="checklist"><li>অপরিহার্য এক্সেল ফর্মুলা ও ফাংশন আয়ত্ত করবেন</li>
+<li>এলোমেলো ডেটা দ্রুত পরিষ্কার ও গুছিয়ে নিতে পারবেন</li>
+<li>যেকোনো ডেটার সারসংক্ষেপ দেয় এমন পিভট টেবিল বানাবেন</li>
+<li>প্রফেশনাল চার্ট ও ড্যাশবোর্ড তৈরি করবেন</li>
+<li>VLOOKUP, XLOOKUP ও IF লজিকে আত্মবিশ্বাসী হবেন</li>
+<li>ডেটা থেকে পরিষ্কার ব্যবসায়িক সুপারিশ দিতে পারবেন</li></ul>
+        </div>
+
+        <div class="detail-block">
+          <h2>কোর্স কারিকুলাম</h2>
+          <p class="cur-note">১৫টি লেসন • নিজের সুবিধামতো সময়ে • ম্যাটেরিয়ালে আজীবন অ্যাক্সেস</p>
+          <div class="accordion"><details><summary><span>মডিউল ১: এক্সেল ফাউন্ডেশন</span> <span class="lesson-count">৩টি লেসন</span></summary><div class="acc-body"><ul><li>ইন্টারফেস ও শর্টকাট</li>
+<li>ফরম্যাটিং ও টেবিল</li>
+<li>অপরিহার্য ফর্মুলা</li></ul></div></details><details><summary><span>মডিউল ২: ডেটা ক্লিনিং</span> <span class="lesson-count">৩টি লেসন</span></summary><div class="acc-body"><ul><li>ডুপ্লিকেট ও এরর দূর করা</li>
+<li>Text-to-Columns ও ভ্যালিডেশন</li>
+<li>কাঁচা ডেটা গোছানো</li></ul></div></details><details><summary><span>মডিউল ৩: অ্যানালাইসিস টুল</span> <span class="lesson-count">৫টি লেসন</span></summary><div class="acc-body"><ul><li>VLOOKUP ও XLOOKUP</li>
+<li>IF, SUMIFS ও COUNTIFS</li>
+<li>পিভট টেবিল ডিপ-ডাইভ</li>
+<li>কন্ডিশনাল ফরম্যাটিং</li>
+<li>প্র্যাকটিস: সেলস ডেটাসেট</li></ul></div></details><details><summary><span>মডিউল ৪: ভিজ্যুয়ালাইজেশন</span> <span class="lesson-count">৪টি লেসন</span></summary><div class="acc-body"><ul><li>সঠিক চার্ট বেছে নেওয়া</li>
+<li>ড্যাশবোর্ড বানানো</li>
+<li>Sparklines ও Slicers</li>
+<li>ফাইনাল প্রজেক্ট ও রিভিউ</li></ul></div></details></div>
+        </div>
+
+        <div class="detail-block">
+          <h2>আপনার ইন্সট্রাক্টর</h2>
+          <div class="instructor-box"><div class="instructor-initials">AR</div><div><h3>Arif Rahman</h3><div class="role">ডেটা অ্যানালিস্ট</div><p>প্রতিদিন বাস্তব ব্যবসায়িক রিপোর্টিংয়ে এক্সেল ব্যবহার করেন এমন একজন চাকরিশীল অ্যানালিস্ট। শুকনো তত্ত্ব নয়, বাস্তব ডেটাসেটে শেখান।</p></div></div>
+        </div>
+
+        <div class="detail-block" style="margin-bottom:0;">
+          <h2>সাধারণ প্রশ্নোত্তর</h2>
+          <div class="accordion"><details><summary><span>কোন এক্সেল ভার্সন লাগবে?</span></summary><div class="acc-body">Excel 2016 বা তার পরের যেকোনো ভার্সন চলবে; ফ্রি Excel Online-ও বেশিরভাগ লেসন কভার করে।</div></details><details><summary><span>আমি একদম নতুন — আমার জন্য?</span></summary><div class="acc-body">হ্যাঁ, মডিউল ১ একদম বেসিক থেকে শুরু।</div></details><details><summary><span>প্র্যাকটিস ফাইল আছে?</span></summary><div class="acc-body">হ্যাঁ, প্রতিটি মডিউলে ডাউনলোডযোগ্য প্র্যাকটিস ডেটাসেট দেওয়া আছে।</div></details><details><summary><span>এটা কি খসড়া পেজ?</span></summary><div class="acc-body">হ্যাঁ — এটি ক্লায়েন্ট রিভিউয়ের জন্য খসড়া ডেমো পেজ; চূড়ান্ত বিল্ডে কনটেন্ট বাড়ানো হবে।</div></details></div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="sidebar-card">
+          <div class="price">$119</div>
+          <div class="price-note">এককালীন পেমেন্ট • ৭ দিনের মানি-ব্যাক গ্যারান্টি</div>
+          <a href="enroll.html?course=course-data-analysis" class="btn btn-accent">এনরোল করুন →</a>
+          <ul class="includes">
+            <li>১৫টি লেসন</li>
+            <li>৫ সপ্তাহ</li>
+            <li>ডাউনলোডযোগ্য রিসোর্স ও টেমপ্লেট</li>
+            <li>কোর্স শেষে সার্টিফিকেট</li>
+            <li>ইন্সট্রাক্টরের কাছে প্রশ্ন করার সুযোগ</li>
+          </ul>
+          <div class="sidebar-note">ডেমো খসড়া — পেমেন্ট এখনো যুক্ত হয়নি।</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Veritas Institute</div>
+        <ul class="footer-links">
+          <li><a href="index.html#faculty">ইন্সট্রাক্টর</a></li>
+          <li><a href="index-bn.html#courses">কোর্স</a></li>
+          <li><a href="contact.html">যোগাযোগ</a></li>
+          <li><a href="privacy.html">প্রাইভেসি পলিসি</a></li>
+          <li><a href="index.html">English</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">© ২০২৬ Veritas Institute ডেমো। সর্বস্বত্ব সংরক্ষিত। — ক্লায়েন্ট রিভিউয়ের জন্য খসড়া প্রিভিউ।</div>
+    </div>
+  </footer>
+</body>
+</html>
